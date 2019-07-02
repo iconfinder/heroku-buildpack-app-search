@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+# bin/compile <build-dir> <cache-dir> <env-dir>
+
+# fail fast
+set -e
+
+BUILD_DIR=$1
+CACHE_DIR=$2
+ENV_DIR=$3
+
+INSTALL_DIR="$BUILD_DIR/.heroku/vendor/app-search"
+
+mkdir -p $INSTALL_DIR
+mkdir -p $CACHE_DIR
+
+indent() {
+  sed -u 's/^/       /'
+}
+
+if [ ! -d $CACHE_DIR/app-search ]; then
+	echo "Fetching and installing App Search..." | indent
+	cd $CACHE_DIR
+	curl -sOL "https://appsearch.elastic.co/downloads/appsearch/app-search-7.2.0.tar.gz"
+	tar zxf "app-search-7.2.0.tar.gz"
+	cd "app-search-7.2.0"
+	cp -r $CACHE_DIR/app-search/* $INSTALL_DIR/
+else
+	echo "Installing App Search from cache..." | indent
+	cp -r $CACHE_DIR/app-search/*  $INSTALL_DIR/
+fi
+
+ls $INSTALL_DIR
+
+echo "Done!" | indent
