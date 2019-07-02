@@ -30,7 +30,7 @@ else
 	cp -r $CACHE_DIR/app-search-7.2.0/*  $INSTALL_DIR/
 fi
 
-ls $INSTALL_DIR
+chmod -R +x /app/.heroku/vendor/app-search/lib/entrypoints
 
 cat <<EOF >> $PROFILE_PATH
 export PATH=/app/.heroku/vendor/app-search/lib/entrypoints:\$PATH
