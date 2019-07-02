@@ -34,7 +34,8 @@ cat <<EOF >> $PROFILE_PATH
 export PATH=/app/.heroku/vendor/app-search/lib/entrypoints:\$PATH
 EOF
 
-chmod -R +x $INSTALL_DIR/lib/require_java_version.sh
+cp $INSTALL_DIR/lib/require_java_version.sh $BUILD_DIR/.profile.d
+
 chmod -R +x $INSTALL_DIR/lib/entrypoints
 
 echo "App Search installed successfully!" | indent
