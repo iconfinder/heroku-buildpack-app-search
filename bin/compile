@@ -17,17 +17,18 @@ indent() {
   sed -u 's/^/       /'
 }
 
-if [ ! -d $CACHE_DIR/app-search ]; then
+if [ ! -d $CACHE_DIR/app-search-7.2.0 ]; then
 	echo "Fetching and installing App Search..." | indent
 	cd $CACHE_DIR
 	curl -sOL "https://appsearch.elastic.co/downloads/appsearch/app-search-7.2.0.tar.gz"
 	tar zxf "app-search-7.2.0.tar.gz"
     ls
 	cd "app-search-7.2.0"
-	cp -r "$CACHE_DIR/app-search/"* $INSTALL_DIR/
+    ls
+	cp -r $CACHE_DIR/app-search-7.2.0/* $INSTALL_DIR/
 else
 	echo "Installing App Search from cache..." | indent
-	cp -r "$CACHE_DIR/app-search/"*  $INSTALL_DIR/
+	cp -r $CACHE_DIR/app-search-7.2.0/*  $INSTALL_DIR/
 fi
 
 ls $INSTALL_DIR
