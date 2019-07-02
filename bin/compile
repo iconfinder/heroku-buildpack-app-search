@@ -20,14 +20,14 @@ indent() {
 if [ ! -d $CACHE_DIR/app-search ]; then
 	echo "Fetching and installing App Search..." | indent
 	cd $CACHE_DIR
-	curl -OL --progress-bar "https://appsearch.elastic.co/downloads/appsearch/app-search-7.2.0.tar.gz"
+	curl -sOL "https://appsearch.elastic.co/downloads/appsearch/app-search-7.2.0.tar.gz"
 	tar zxf "app-search-7.2.0.tar.gz"
     ls
 	cd "app-search-7.2.0"
-	cp -r $CACHE_DIR/app-search/* $INSTALL_DIR/
+	cp -r "$CACHE_DIR/app-search/"* $INSTALL_DIR/
 else
 	echo "Installing App Search from cache..." | indent
-	cp -r $CACHE_DIR/app-search/*  $INSTALL_DIR/
+	cp -r "$CACHE_DIR/app-search/"*  $INSTALL_DIR/
 fi
 
 ls $INSTALL_DIR
