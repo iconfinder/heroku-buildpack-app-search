@@ -9,8 +9,10 @@ CACHE_DIR=$2
 ENV_DIR=$3
 
 INSTALL_DIR="$BUILD_DIR/.heroku/vendor/app-search"
+PROFILE_PATH="$BUILD_DIR/.profile.d/app-search.sh"
 
 mkdir -p $INSTALL_DIR
+mkdir -p $(dirname $PROFILE_PATH)
 mkdir -p $CACHE_DIR
 
 indent() {
@@ -30,6 +32,7 @@ fi
 
 ls $INSTALL_DIR
 
-# export PATH=/app/.heroku/vendor/app-search/bin:\$PATH
+cat <<EOF >> $PROFILE_PATH
+export PATH=$INSTALL_DIR:\$PATH
 
 echo "App Search installed successfully!" | indent
