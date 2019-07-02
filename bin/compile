@@ -22,9 +22,6 @@ if [ ! -d $CACHE_DIR/app-search-7.2.0 ]; then
 	cd $CACHE_DIR
 	curl -sOL "https://appsearch.elastic.co/downloads/appsearch/app-search-7.2.0.tar.gz"
 	tar zxf "app-search-7.2.0.tar.gz"
-    ls
-	cd "app-search-7.2.0"
-    ls
 	cp -r $CACHE_DIR/app-search-7.2.0/* $INSTALL_DIR/
 else
 	echo "Installing App Search from cache..." | indent
@@ -33,4 +30,4 @@ fi
 
 ls $INSTALL_DIR
 
-echo "Done!" | indent
+echo "App Search installed successfully!" | indent
