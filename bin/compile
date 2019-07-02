@@ -9,7 +9,7 @@ CACHE_DIR=$2
 ENV_DIR=$3
 
 INSTALL_DIR="$BUILD_DIR/.heroku/vendor/app-search"
-PROFILE_PATH="$BUILD_DIR/.profile.d/app-search.sh"
+PROFILE_PATH="$BUILD_DIR/.profile.d/elasticsearch.sh"
 
 mkdir -p $INSTALL_DIR
 mkdir -p $(dirname $PROFILE_PATH)
@@ -34,5 +34,6 @@ ls $INSTALL_DIR
 
 cat <<EOF >> $PROFILE_PATH
 export PATH=/app/.heroku/vendor/app-search/bin:\$PATH
+EOF
 
 echo "App Search installed successfully!" | indent
