@@ -1,2 +1,20 @@
-#!/usr/bin/env bash
-# bin/release <build-dir>
+#!/bin/bash
+
+set -e
+
+if type -p java >/dev/null; then
+    echo "Found java executable in PATH"
+    export _JAVA=java
+else
+    echo "Could not find java in PATH"
+    exit 1
+fi
+
+version=$("$_JAVA" -version 2>&1 | awk -F '"' '/version/ {print $2}')
+echo "Java version: $version"
+
+numeric_version=$(echo "$version" | awk -F. '{printf("%03d%03d",$1,$2);}')
+if [ "$numeric_version" -lt "001008" ] ; then
+    echo "Elastic App Search requires Java version 1.8 or higher, current version is $version"
+    exit 1
+fi
