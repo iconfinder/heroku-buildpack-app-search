@@ -33,7 +33,7 @@ fi
 ls $INSTALL_DIR
 
 cat <<EOF >> $PROFILE_PATH
-export PATH=/app/.heroku/vendor/app-search/bin:\$PATH
+export PATH=/app/.heroku/vendor/app-search/lib/entrypoints:\$PATH
 EOF
 
 echo "App Search installed successfully!" | indent
