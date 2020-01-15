@@ -23,7 +23,7 @@ indent() {
 if [ ! -d $CACHE_DIR/app-search-APPSEARCH_VERSION ]; then
 	echo "Fetching and installing App Search..." | indent
 	cd $CACHE_DIR
-	curl -sOL "https://appsearch.elastic.co/downloads/appsearch/app-search-APPSEARCH_VERSION.tar.gz"
+	curl -sOL "https://artifacts.elastic.co/downloads/app-search/app-search-APPSEARCH_VERSION.tar.gz"
 	tar zxf "app-search-APPSEARCH_VERSION.tar.gz"
 	cp -r $CACHE_DIR/app-search-APPSEARCH_VERSION/* $INSTALL_DIR/
 else
