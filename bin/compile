@@ -10,7 +10,6 @@ ENV_DIR=$3
 
 INSTALL_DIR="$BUILD_DIR/.heroku/vendor/app-search"
 PROFILE_PATH="$BUILD_DIR/.profile.d/elasticsearch.sh"
-APPSEARCH_VERSION="7.5.0"
 
 mkdir -p $INSTALL_DIR
 mkdir -p $(dirname $PROFILE_PATH)
@@ -20,15 +19,15 @@ indent() {
   sed -u 's/^/       /'
 }
 
-if [ ! -d $CACHE_DIR/app-search-APPSEARCH_VERSION ]; then
+if [ ! -d $CACHE_DIR/app-search-7.5.0 ]; then
 	echo "Fetching and installing App Search..." | indent
 	cd $CACHE_DIR
-	curl -sOL "https://artifacts.elastic.co/downloads/app-search/app-search-APPSEARCH_VERSION.tar.gz"
-	tar zxf "app-search-APPSEARCH_VERSION.tar.gz"
-	cp -r $CACHE_DIR/app-search-APPSEARCH_VERSION/* $INSTALL_DIR/
+	curl -sOL "https://artifacts.elastic.co/downloads/app-search/app-search-7.5.0.tar.gz"
+	tar zxf "app-search-7.5.0.tar.gz"
+	cp -r $CACHE_DIR/app-search-7.5.0/* $INSTALL_DIR/
 else
 	echo "Installing App Search from cache..." | indent
-	cp -r $CACHE_DIR/app-search-APPSEARCH_VERSION/*  $INSTALL_DIR/
+	cp -r $CACHE_DIR/app-search-7.5.0/*  $INSTALL_DIR/
 fi
 
 cat <<EOF >> $PROFILE_PATH
